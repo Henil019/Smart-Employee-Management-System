@@ -1,7 +1,7 @@
 Smart Employee Management System
 Overview
 
-AI-Powered Employee Management System is a web application developed using ASP.NET MVC, SQL Server, ADO.NET, Entity Framework, Python Flask, Ollama, and Phi-3.
+Smart Employee Management System is a web application developed using ASP.NET MVC, SQL Server, ADO.NET, Entity Framework, Python Flask, Ollama, and Phi-3.
 
 The system manages employee records, attendance, departments, and salary information while providing AI-powered analytics through a conversational interface.
 
