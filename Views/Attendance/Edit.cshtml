@@ -1,0 +1,70 @@
+@model EmployeeManagementSystem.Models.Attendance
+
+@{
+    ViewBag.Title = "Edit Attendance";
+}
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h2 class="display-6 fw-bold text-primary mb-0">
+                        <i class="bi bi-pencil-square me-2"></i>Edit Attendance
+                    </h2>
+                    <p class="text-muted mt-1">Update attendance record for #@Model.Id</p>
+                </div>
+                <a href="@Url.Action("Index")" class="btn btn-outline-secondary rounded-3 shadow-sm">
+                    <i class="bi bi-arrow-left me-1"></i> Back to List
+                </a>
+            </div>
+
+            <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-body p-5">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(model => model.Id)
+                        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger rounded-3 p-3 mb-4" })
+
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold text-secondary">
+                                    <i class="bi bi-person-badge me-1"></i> Employee ID
+                                </label>
+                                @Html.EditorFor(model => model.EmployeeId, new { htmlAttributes = new { @class = "form-control form-control-lg bg-light border-0" } })
+                                @Html.ValidationMessageFor(model => model.EmployeeId, "", new { @class = "text-danger small mt-1" })
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold text-secondary">
+                                    <i class="bi bi-calendar-date me-1"></i> Attendance Date
+                                </label>
+                                @Html.EditorFor(model => model.AttendanceDate, new { htmlAttributes = new { @class = "form-control form-control-lg bg-light border-0", type="date", @Value = Model.AttendanceDate.ToString("yyyy-MM-dd") } })
+                                @Html.ValidationMessageFor(model => model.AttendanceDate, "", new { @class = "text-danger small mt-1" })
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label fw-semibold text-secondary">
+                                    <i class="bi bi-info-circle me-1"></i> Status
+                                </label>
+                                @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control form-control-lg bg-light border-0" } })
+                                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger small mt-1" })
+                            </div>
+
+                            <div class="col-12 mt-5 text-end">
+                                <button type="submit" class="btn btn-warning btn-lg px-5 shadow-sm rounded-3">
+                                    <i class="bi bi-check-circle me-2"></i>Save Changes
+                                </button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
